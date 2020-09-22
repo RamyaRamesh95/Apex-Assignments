@@ -1,0 +1,29 @@
+@isTest
+private class A1Test {
+    @isTest static void A1Testmethod() {
+       
+        Account accte = new Account(Name = 'firsttest', is_gold__c = False);
+        insert accte;
+        
+        opportunity oppte = new opportunity();
+        oppte.AccountId = accte.id; 
+        oppte.Name = 'topp';
+        oppte.StageName = 'Prospecting';
+        oppte.CloseDate = System.today();
+        oppte.Amount = 15000;
+        insert oppte;            
+        
+        
+        oppte.Amount = 45000;
+        update oppte;       
+                
+        System.assertEquals( accte.is_gold__c = True,  accte.is_gold__c );       
+       
+        
+        oppte.Amount = 10000;
+        update oppte;                
+            
+        System.assertEquals( accte.is_gold__c = False,  accte.is_gold__c );
+
+}
+}

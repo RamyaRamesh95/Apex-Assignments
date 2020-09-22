@@ -1,0 +1,17 @@
+public class CompletedTaskClass {
+        public static void CTmethod(List<Task> CTask){
+    
+    List<Account> Account = new List<Account>();
+    List<Account> CompletedTask = new List<Account>();
+    
+        CompletedTask =[SELECT Id, Name, Completed_Task__c,(Select Status From Tasks Where Status = 'Completed' )  FROM Account];      
+                
+        for(Account acc:CompletedTask) {
+            CTask = acc.Tasks;
+            acc.Completed_Task__c = CTask.size();
+            Account.add(acc);           
+        }        
+            update Account;        
+    
+        }
+}

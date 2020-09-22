@@ -1,0 +1,23 @@
+@isTest
+private class A3Test {
+    @isTest static void A3Testmethod() {
+        
+        Account accte3 = new Account(Name = 'thirdtest', Only_Default_Contact__c = False);
+        insert accte3;             
+
+        System.assertEquals( accte3.Only_Default_Contact__c = True,  accte3.Only_Default_Contact__c );
+        
+        Contact conte3 = new Contact();
+        conte3.LastName = 'test3con';
+        conte3.AccountId = accte3.Id;
+        insert conte3;
+        
+        System.assertEquals( accte3.Only_Default_Contact__c = False,  accte3.Only_Default_Contact__c );
+        
+        delete conte3;
+        
+        System.assertEquals( accte3.Only_Default_Contact__c = True,  accte3.Only_Default_Contact__c );
+        
+       
+    }
+}

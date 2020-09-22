@@ -1,0 +1,4 @@
+trigger A3 on Account (after insert) {   
+    
+    A3Class.A3method(trigger.new);
+}

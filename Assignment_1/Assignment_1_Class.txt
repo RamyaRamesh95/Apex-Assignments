@@ -1,0 +1,21 @@
+public class A1class {
+    public static void A1method(List<opportunity> oppl){
+        
+        
+    list<account> accounts =  new list<account>();
+    
+    for(opportunity opp : oppl){
+    for(account acc : [select name, is_gold__c from account]){    
+        if(opp.Amount > 20000){
+            acc.is_gold__c = True;
+            accounts.add(acc);
+        }
+        else{
+            acc.is_gold__c = False;
+            accounts.add(acc);
+
+        }
+    }
+  }update accounts;
+ }
+}

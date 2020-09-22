@@ -1,0 +1,4 @@
+trigger Assign1 on Opportunity (after insert, after update) {
+    
+   A1class.A1method(trigger.new);
+}

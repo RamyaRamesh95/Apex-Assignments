@@ -1,0 +1,25 @@
+@isTest
+private class A2Test {
+    @isTest static void A2Testmethod() {        
+        
+        Account accte2 = new Account();
+        accte2.Name = 'test2acc';
+        
+        insert accte2;
+        
+        Contact Conte2 = new Contact( FirstName = 'test', LastName = 'two', AccountId = accte2.id );
+        insert conte2;
+        
+        accte2.Website = 'www.test2acc.com';
+        update accte2;
+        
+        System.assertEquals(conte2.Profile__c= 'www.test2acc.com/ttwo', conte2.Profile__c );
+        
+        accte2.Website = 'www.2testclass.com';
+        update accte2;
+        
+        System.assertEquals(conte2.Profile__c= 'www.2testclass.com/ttwo', conte2.Profile__c );
+        
+        
+    }
+}

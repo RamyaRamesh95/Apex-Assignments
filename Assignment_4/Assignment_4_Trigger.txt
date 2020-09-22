@@ -1,0 +1,41 @@
+@isTest
+private class CompletedTaskTest {
+    @isTest static void CTTestMethod(){
+        
+        Account acc = new Account(Name = 'oneacc');
+        insert acc;
+        
+        
+        Task T1 = new Task(Subject = 'call' , Status = 'In Progress' );
+        insert T1;
+        
+        Task T2 = new Task(Subject = 'Email' , Status = 'Not Started' );
+        insert T2;
+        
+        T1.Status= 'Completed';
+        update T1;
+        
+        System.assertEquals( acc.Completed_Task__c = 1, acc.Completed_Task__c );
+        
+        T2.Status= 'Completed';
+        update T2;
+        
+        System.assertEquals( acc.Completed_Task__c = 2, acc.Completed_Task__c );
+        
+        
+        T1.Status ='Waiting on someone else';
+        update T1;
+        
+        System.assertEquals( acc.Completed_Task__c = 1, acc.Completed_Task__c );
+
+        
+        delete T2;
+        
+        System.assertEquals( acc.Completed_Task__c = 0, acc.Completed_Task__c );
+        
+        
+        
+        
+    }
+
+}

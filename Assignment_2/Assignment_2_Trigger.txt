@@ -1,0 +1,4 @@
+trigger A2 on Account (after insert, after update) {
+    
+    A2class.A2method(trigger.new);
+}

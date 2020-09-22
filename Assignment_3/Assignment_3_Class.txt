@@ -1,0 +1,30 @@
+public class A3Class {
+   public static void A3method(List<Account> accm){
+    List<Contact> ct = new List<Contact>();
+    for(Account acc : accm){
+        Contact c = new Contact(
+            		LastName = acc.Name,            
+                    AccountId = acc.id,
+                    Email = acc.Name + '@' + acc.Name + '.' + 'com' );        
+        ct.add(c);
+    }
+    insert ct;     
+  	}
+    
+	
+	
+	public static void A31method(List<contact> conm){
+	List<Account> acc1= new List<Account>();
+	for(Account acct:[select Name,Only_Default_Contact__c, (Select LastName from Contacts) from Account]){
+        if(acct.Contacts.size() == 1){
+            acct.Only_Default_Contact__c = True;
+            acc1.add(acct);
+        }
+        else{
+            acct.Only_Default_Contact__c = False;
+            acc1.add(acct);
+        }
+	}
+        update acc1;
+    }
+}

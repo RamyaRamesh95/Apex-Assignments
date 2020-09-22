@@ -1,0 +1,16 @@
+public class A2class {
+    public static void A2method(List<Account> acm){
+       List<Contact> Contact_List = new List<Contact>();
+            for(Contact con : [select Id,Firstname,Lastname,Profile__c,Accountid,Account.Website from contact])
+            {
+                if(con.FirstName != Null)
+                {
+                    con.Profile__c = con.account.Website + '/' + con.FirstName.substring(0, 1) + con.lastname;
+                    Contact_List.add(con);
+                }
+            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+            update Contact_List;
+   
+    }
+
+}
